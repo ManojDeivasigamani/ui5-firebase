@@ -1,0 +1,52 @@
+<mvc:View controllerName="fb.ui5firebase.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <!-- <Shell id="shell"> -->
+    <App id="app">
+        <pages>
+            <Page id="page" title="{i18n>title}">
+                <content>
+                    <MessageStrip text="{i18n>fbSecurityRules}" type="Warning" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom"/>
+
+                    <Table id="shipmentTable" items="{/shipments}">
+                        <headerToolbar>
+                            <Toolbar>
+                                <content>
+                                    <Title text="{i18n>Shipments}" level="H2"/>
+                                    <ToolbarSpacer />
+                                    <!-- <Button id="editButton" text="Edit" type="Transparent" press="onEdit" /> -->
+                                    <Button id="saveButton" text="Save" type="Transparent" press="onSave"/>
+                                </content>
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text text="{i18n>ShipmentId}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>Origin}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>Destination}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>Status}"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{code}"/>
+                                    <Text text="{origin}"/>
+                                    <Text text="{destination}"/>
+                                    <ObjectStatus text="{status}" state="{= ${status} === 'Shipped' ? 'Success' : ${status} === 'Missing' ? 'Warning' : ${status} === 'Preparing' ? 'Information' : 'Error'}" icon="{= ${status} === 'Shipped' ? 'sap-icon://accept' : ${status} === 'Missing' ? 'sap-icon://status-critical' : ${status} === 'Preparing' ? 'sap-icon://begin' : 'sap-icon://status-negative'}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Page>
+        </pages>
+    </App>
+    <!-- </Shell> -->
+</mvc:View>
